@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
+import { css } from "~/styled-system/css";
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,7 +14,9 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix (with Vite and Cloudflare)</h1>
+      <h1 className={css({ fontSize: "md", fontWeight: "bold" })}>
+        Welcome to Remix (with Vite and Cloudflare)
+      </h1>
       <ul>
         <li>
           <a
