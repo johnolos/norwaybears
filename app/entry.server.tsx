@@ -1,13 +1,11 @@
-/**
- * By default, Remix will handle generating the HTTP Response for you.
- * You are free to delete this file if you'd like to, but if you ever want it revealed again, you can run `npx remix reveal` ✨
- * For more information, see https://remix.run/file-conventions/entry.server
- */
-
 import type { AppLoadContext, EntryContext } from "@remix-run/cloudflare";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+import { createInstance } from "i18next";
+import i18nServer from "./i18next.server";
+import { I18nextProvider, initReactI18next } from "react-i18next";
+import * as i18n from "./config/i18n";
 
 export default async function handleRequest(
   request: Request,
@@ -19,8 +17,20 @@ export default async function handleRequest(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   loadContext: AppLoadContext,
 ) {
+  const instance = createInstance();
+  const lng = await i18nServer.getLocale(request);
+  const ns = i18nServer.getRouteNamespaces(remixContext);
+
+  await instance.use(initReactI18next).init({
+    ...i18n,
+    lng,
+    ns,
+  });
+
   const body = await renderToReadableStream(
-    <RemixServer context={remixContext} url={request.url} />,
+    <I18nextProvider i18n={instance}>
+      <RemixServer context={remixContext} url={request.url} />
+    </I18nextProvider>,
     {
       signal: request.signal,
       onError(error: unknown) {

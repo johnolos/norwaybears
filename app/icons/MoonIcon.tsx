@@ -23,4 +23,6 @@ const MoonIcon: React.FC<React.SVGProps<SVGSVGElement>> = forwardRef(
   },
 );
 
+MoonIcon.displayName = "MoonIcon";
+
 export default MoonIcon;

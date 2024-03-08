@@ -11,4 +11,6 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   return <StyledIcon ref={ref} asChild {...props} />;
 });
 
+Icon.displayName = "Icon";
+
 const StyledIcon = styled(ark.svg, icon);

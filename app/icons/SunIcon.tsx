@@ -31,4 +31,6 @@ const SunIcon: React.FC<React.SVGProps<SVGSVGElement>> = forwardRef(
   },
 );
 
+SunIcon.displayName = "SunIcon";
+
 export default SunIcon;

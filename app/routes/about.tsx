@@ -13,12 +13,12 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Index() {
+export default function About() {
   const { t } = useTranslation();
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1 className={css({ fontSize: "6xl", fontWeight: "bold" })}>
-        {t("greeting")}
+        {t("about")}
       </h1>
       <ul>
         <li>
