@@ -1,3 +1,8 @@
 name = "norwaybears"
 compatibility_date = "2024-02-23"
 compatibility_flags = ["nodejs_compat"]
+
+
+[vars]
+SANITY_STUDIO_PROJECT_ID = "890pwjuq"
+SANITY_STUDIO_DATASET = "production"
