@@ -12,7 +12,7 @@ const locales = [
 
 function LanguageButtons() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const changeLocale = async (locale: string) => {
     setSearchParams({ ...searchParams, lng: locale });
@@ -27,6 +27,10 @@ function LanguageButtons() {
           onClick={() => changeLocale(it.id)}
           variant="ghost"
           aria-selected={i18n.language === it.id}
+          title={t(
+            `localeBtn.${i18n.language === it.id ? "selected" : "unselected"}`,
+            { language: t(`locale.${it.id}`) },
+          )}
           className={css({
             _selected: {
               color: "accent.default",
