@@ -20,26 +20,6 @@ export default function About() {
       <h1 className={css({ fontSize: "6xl", fontWeight: "bold" })}>
         {t("about")}
       </h1>
-      <ul>
-        <li>
-          <Link textStyle="4xl" asChild>
-            <a
-              target="_blank"
-              href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/"
-              rel="noreferrer"
-            >
-              Cloudflare Pages Docs - Remix guide
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link textStyle="4xl" asChild>
-            <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-              Remix Docs
-            </a>
-          </Link>
-        </li>
-      </ul>
     </div>
   );
 }

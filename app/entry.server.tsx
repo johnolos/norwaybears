@@ -7,6 +7,11 @@ import i18nServer from "./i18next.server";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import * as i18n from "./config/i18n";
 
+if (process.env.NODE_ENV === "development") {
+  const { server } = await import("./mocks/server");
+  server.listen();
+}
+
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,

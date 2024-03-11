@@ -5,6 +5,7 @@ export default {
   about: "Dette er siden hvor bamseklubben og dens historie er beskrevet",
   nav: {
     home: "Hjem",
+    events: "Arrangementer",
     about: "Om bamseklubben",
   } satisfies Record<NavId, string>,
   locale: {

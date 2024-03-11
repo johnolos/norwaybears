@@ -25,8 +25,8 @@ export const loader: LoaderFunction = async ({ request, context }) => {
   console.log(context);
 
   const client = new PicoSanity({
-    projectId: context.cloudflare.env.SANITY_PROJECT_ID,
-    dataset: context.cloudflare.env.SANITY_DATASET,
+    projectId: context.cloudflare.env.SANITY_STUDIO_PROJECT_ID,
+    dataset: context.cloudflare.env.SANITY_STUDIO_DATASET,
     apiVersion: "2021-03-25", // use a UTC date string
     useCdn: true,
   });

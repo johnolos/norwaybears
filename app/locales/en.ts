@@ -5,6 +5,7 @@ export default {
   about: "This is the page where the bear club and its history is described",
   nav: {
     home: "Home",
+    events: "Events",
     about: "About Norway Bears",
   } satisfies Record<NavId, string>,
   locale: {
