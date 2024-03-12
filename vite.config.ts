@@ -8,4 +8,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [remixCloudflareDevProxy(), remix(), tsconfigPaths()],
   server: { port: 3000 },
+  build: {
+    target: "esnext",
+  },
 });

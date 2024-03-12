@@ -14,15 +14,15 @@ import Backend from "i18next-http-backend";
 import { getInitialNamespaces } from "remix-i18next/client";
 import * as i18n from "./config/i18n";
 
-async function enableMocking() {
-  if (process.env.NODE_ENV !== "development") {
-    return;
-  }
+// async function enableMocking() {
+//   if (process.env.NODE_ENV !== "development") {
+//     return;
+//   }
 
-  const { worker } = await import("./mocks/browser");
+//   const { worker } = await import("./mocks/browser");
 
-  return worker.start();
-}
+//   return worker.start();
+// }
 
 async function enableTranslation() {
   return i18next
@@ -47,7 +47,8 @@ async function enableTranslation() {
 }
 
 async function hydrate() {
-  await Promise.all([enableMocking(), enableTranslation()]);
+  await enableTranslation();
+  // await Promise.all([enableMocking(), enableTranslation()]);
 
   startTransition(() => {
     hydrateRoot(

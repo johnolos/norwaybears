@@ -7,10 +7,17 @@ import i18nServer from "./i18next.server";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import * as i18n from "./config/i18n";
 
-if (process.env.NODE_ENV === "development") {
-  const { server } = await import("./mocks/server");
-  server.listen();
-}
+// async function enableMocking() {
+//   if (process.env.NODE_ENV !== "development") {
+//     return;
+//   }
+
+//   const { server } = await import("./mocks/server");
+
+//   server.listen();
+// }
+
+// enableMocking();
 
 export default async function handleRequest(
   request: Request,
