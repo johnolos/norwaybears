@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 export const navLinks = [
   { id: "home", to: "/" },
   { id: "events", to: "/events" },
-  { id: "about", to: "/about" },
+  //  { id: "about", to: "/about" },
 ] as const;
 
 export type NavId = Pick<(typeof navLinks)[number], "id">["id"];

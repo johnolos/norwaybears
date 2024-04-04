@@ -1,16 +1,15 @@
-import type { MetaFunction, LoaderFunction } from "@remix-run/cloudflare";
+import type { LoaderFunction } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
-import { Link } from "~/components/ui/link";
 import { css } from "~/styled-system/css";
 import { useTranslation } from "react-i18next";
 import { useLoaderData } from "@remix-run/react";
 import { eventsQuery } from "~/api/api";
+import EventList from "~/components/EventList";
 
 import {
   QueryClient,
   dehydrate,
   HydrationBoundary,
-  useQueryClient,
   useQuery,
 } from "@tanstack/react-query";
 
@@ -20,10 +19,6 @@ import { useSanityClient } from "~/providers/SanityClientProvider";
 export const loader: LoaderFunction = async ({ request, context }) => {
   const queryClient = new QueryClient();
 
-  let lng = "nb";
-
-  console.log(context);
-
   const client = new PicoSanity({
     projectId: context.cloudflare.env.SANITY_STUDIO_PROJECT_ID,
     dataset: context.cloudflare.env.SANITY_STUDIO_DATASET,
@@ -31,42 +26,21 @@ export const loader: LoaderFunction = async ({ request, context }) => {
     useCdn: true,
   });
 
-  await queryClient.prefetchQuery(eventsQuery(client, lng));
+  await queryClient.prefetchQuery(eventsQuery(client));
 
   return json({ dehydratedState: dehydrate(queryClient) });
 };
 
 function Events() {
-  const data = useLoaderData<typeof loader>();
   const sanityClient = useSanityClient();
-  const events = useQuery(eventsQuery(sanityClient, "nb"));
-  console.log(events);
+  const events = useQuery(eventsQuery(sanityClient));
   const { t } = useTranslation();
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1 className={css({ fontSize: "6xl", fontWeight: "bold" })}>
-        {t("about")}
+        {t("events.title")}
       </h1>
-      <ul>
-        <li>
-          <Link textStyle="4xl" asChild>
-            <a
-              target="_blank"
-              href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/"
-              rel="noreferrer"
-            >
-              Cloudflare Pages Docs - Remix guide
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link textStyle="4xl" asChild>
-            <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-              Remix Docs
-            </a>
-          </Link>
-        </li>
-      </ul>
+      {events.data && <EventList events={events.data} />}
     </div>
   );
 }

@@ -4,9 +4,15 @@ import {
 } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import Icons from "unplugin-icons/vite";
 
 export default defineConfig({
-  plugins: [remixCloudflareDevProxy(), remix(), tsconfigPaths()],
+  plugins: [
+    Icons({ compiler: "jsx", jsx: "react" }),
+    remixCloudflareDevProxy(),
+    remix(),
+    tsconfigPaths(),
+  ],
   server: { port: 3000 },
   build: {
     target: "esnext",

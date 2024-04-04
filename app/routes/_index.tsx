@@ -18,28 +18,8 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1 className={css({ fontSize: "6xl", fontWeight: "bold" })}>
-        {t("greeting")}
+        {t("welcome")}
       </h1>
-      <ul>
-        <li>
-          <Link textStyle="4xl" asChild>
-            <a
-              target="_blank"
-              href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/"
-              rel="noreferrer"
-            >
-              Cloudflare Pages Docs - Remix guide
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link textStyle="4xl" asChild>
-            <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-              Remix Docs
-            </a>
-          </Link>
-        </li>
-      </ul>
     </div>
   );
 }

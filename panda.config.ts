@@ -10,7 +10,8 @@ export default defineConfig({
     createPreset({
       accentColor: "brown",
       grayColor: "sand",
-      borderRadius: "none",
+      borderRadius: "lg",
+      additionalColors: ["brown", "yellow", "amber", "orange", "pink", "grass"],
     }),
   ],
 
@@ -31,7 +32,21 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    extend: {},
+    extend: {
+      tokens: {
+        colors: {
+          brand: {
+            brown: { value: "#613704" },
+            orange: { value: "#D46300" },
+            golden: { value: "#FDDC62" },
+            tan: { value: "#FDE5B7" },
+            white: { value: "#FFFFFF" },
+            black: { value: "#000000" },
+            pink: { value: "#d8a1a7" },
+          },
+        },
+      },
+    },
   },
 
   // The output directory for your css system

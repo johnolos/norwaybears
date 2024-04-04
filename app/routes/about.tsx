@@ -1,5 +1,4 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
-import { Link } from "~/components/ui/link";
 import { css } from "~/styled-system/css";
 import { useTranslation } from "react-i18next";
 

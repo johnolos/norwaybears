@@ -16,7 +16,7 @@ function LanguageButtons() {
 
   const changeLocale = async (locale: string) => {
     setSearchParams({ ...searchParams, lng: locale });
-    i18n.changeLanguage(locale);
+    await i18n.changeLanguage(locale);
   };
 
   return (
