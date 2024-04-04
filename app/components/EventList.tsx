@@ -19,15 +19,18 @@ function EventList({ events }: Props) {
 
   const monthFormatter = new Intl.DateTimeFormat(locale, {
     month: "short",
+    timeZone: "Europe/Oslo",
   });
 
   const dayFormatter = new Intl.DateTimeFormat(locale, {
     day: "numeric",
+    timeZone: "Europe/Oslo",
   });
 
   const timeFormatter = new Intl.DateTimeFormat(locale, {
     hour: "2-digit",
     minute: "2-digit",
+    timeZone: "Europe/Oslo",
   });
 
   if (events.length === 0) {
